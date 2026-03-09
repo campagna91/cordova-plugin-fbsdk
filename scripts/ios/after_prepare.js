@@ -3,7 +3,7 @@
 const fs = require('fs');
 const utilities = require('./lib/utilities');
 
-module.exports = function (context) {
+module.exports = function(context) {
 
   // 1. Prepare values
 
@@ -53,7 +53,7 @@ module.exports = function (context) {
 
   // 2. Update  values
 
-  const updatePlistContent = function () {
+  const updatePlistContent = function() {
     const plistPath = utilities.getPlistPath(context)
     fs.statSync(plistPath)
 

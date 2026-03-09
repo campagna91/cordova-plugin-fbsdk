@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Utilities = {};
 
-Utilities.getPreferenceValueFromConfig = function (config, name) {
+Utilities.getPreferenceValueFromConfig = function(config, name) {
   const value = config.match(new RegExp('name="' + name + '" value="(.*?)"', "i"))
   if (value && value[1]) {
     return value[1]
@@ -10,7 +10,7 @@ Utilities.getPreferenceValueFromConfig = function (config, name) {
   }
 }
 
-Utilities.getPreferenceValueFromPackageJson = function (packageJson, name) {
+Utilities.getPreferenceValueFromPackageJson = function(packageJson, name) {
   const value = packageJson.match(new RegExp('"' + name + '":\\s"(.*?)"', "i"));
   if (value && value[1]) {
     return value[1]
@@ -19,7 +19,7 @@ Utilities.getPreferenceValueFromPackageJson = function (packageJson, name) {
   }
 }
 
-Utilities.getPreferenceValue = function (name) {
+Utilities.getPreferenceValue = function(name) {
   const config = fs.readFileSync("config.xml").toString();
   let preferenceValue = Utilities.getPreferenceValueFromConfig(config, name);
   if (!preferenceValue) {
@@ -29,7 +29,7 @@ Utilities.getPreferenceValue = function (name) {
   return preferenceValue
 }
 
-Utilities.getPlistPath = function (context) {
+Utilities.getPlistPath = function(context) {
   const common = context.requireCordovaModule('cordova-common');
   const util = context.requireCordovaModule('cordova-lib/src/cordova/util');
   const projectName = new common.ConfigParser(util.projectConfig(util.isCordova())).name();

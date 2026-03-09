@@ -48,9 +48,10 @@ If you are looking to test the plugin, would like to reproduce a bug or build is
 ## Compatibility
 
   * Cordova >= 5.0.0
-  * cordova-android >= 9.0.0
-  * cordova-ios >= 6.0.0
+  * cordova-android >= 9.0.0 (Android minSdkVersion >= 21)
+  * cordova-ios >= 6.0.0 (iOS deployment target >= 12.0)
   * cordova-browser >= 3.6
+  * **Facebook SDK >= v25.0.0** (required by Facebook specifications)
 
 ## Facebook SDK
 
@@ -58,7 +59,10 @@ This plugin use the SDKs provided by Facebook. More information about these in t
 
 ### Facebook SDK version
 
-This plugin will always be released for iOS and for Android with a synchronized usage of the Facebook SDKs.
+This plugin currently uses **Facebook SDK v25.0.0** for both iOS and Android platforms. This version is required by Facebook's specifications and is the minimum supported version.
+
+- iOS: FBSDKCoreKit, FBSDKLoginKit, FBSDKShareKit, FBSDKGamingServicesKit (v25.0.0)
+- Android: facebook-android-sdk (v25.0.0)
 
 ### Graph API version
 

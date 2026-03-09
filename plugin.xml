@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-fbsdk"
-        version="4.1.3">
+    xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-fbsdk" version="4.2.0">
 
     <name>Facebook Connect</name>
 
@@ -25,8 +23,8 @@
     <preference name="FACEBOOK_AUTO_LOG_APP_EVENTS" default="true" />
     <preference name="FACEBOOK_HYBRID_APP_EVENTS" default="false" />
     <preference name="FACEBOOK_ADVERTISER_ID_COLLECTION" default="true" />
-    <preference name="FACEBOOK_ANDROID_SDK_VERSION" default="18.0.2"/>
-    <preference name="FACEBOOK_IOS_SDK_VERSION" default="18.0.0"/>
+    <preference name="FACEBOOK_ANDROID_SDK_VERSION" default="25.0.0"/>
+    <preference name="FACEBOOK_IOS_SDK_VERSION" default="25.0.0"/>
     <preference name="FACEBOOK_BROWSER_SDK_VERSION" default="v22.0" />
 
     <engines>
@@ -50,7 +48,7 @@
             <access origin="https://api.facebook.com" />
             <access origin="https://*.fbcdn.net" />
             <access origin="https://*.akamaihd.net" />
-            <preference name="android-minSdkVersion" value="15" />
+            <preference name="android-minSdkVersion" value="21" />
         </config-file>
 
         <source-file src="src/android/facebookconnect.xml" target-dir="res/values" />
@@ -67,8 +65,10 @@
             <queries>
                 <package android:name="com.facebook.katana" />
                 <!-- https://developers.facebook.com/docs/android/troubleshooting/#faq_267321845055988 -->
-                <provider android:authorities="com.facebook.katana.provider.PlatformProvider" /> <!-- allows app to access Facebook app features -->
-                <provider android:authorities="com.facebook.orca.provider.PlatformProvider" /> <!-- allows sharing to Messenger app -->
+                <provider android:authorities="com.facebook.katana.provider.PlatformProvider" />
+                <!-- allows app to access Facebook app features -->
+                <provider android:authorities="com.facebook.orca.provider.PlatformProvider" />
+                <!-- allows sharing to Messenger app -->
             </queries>
         </config-file>
 
@@ -78,12 +78,8 @@
             <meta-data android:name="com.facebook.sdk.ApplicationName" android:value="@string/fb_app_name" />
             <meta-data android:name='com.facebook.sdk.AutoLogAppEventsEnabled' android:value='@bool/fb_auto_log_app_events_enabled'/>
             <meta-data android:name="com.facebook.sdk.AdvertiserIDCollectionEnabled" android:value='@bool/fb_advertiser_id_collection_enabled' />
-            <activity android:name="com.facebook.FacebookActivity"
-              android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-              android:label="@string/fb_app_name" />
-            <provider android:authorities="${applicationId}.com.facebook.app.FacebookContentProvider$APP_ID"
-              android:name="com.facebook.FacebookContentProvider"
-              android:exported="true" />
+            <activity android:name="com.facebook.FacebookActivity" android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation" android:label="@string/fb_app_name" />
+            <provider android:authorities="${applicationId}.com.facebook.app.FacebookContentProvider$APP_ID" android:name="com.facebook.FacebookContentProvider" android:exported="true" />
         </config-file>
 
         <framework src="com.facebook.android:facebook-android-sdk:$FACEBOOK_ANDROID_SDK_VERSION"/>
@@ -144,53 +140,53 @@
         </config-file>
 
         <config-file target="*-Info.plist" parent="CFBundleURLTypes">
-          <array>
-            <dict>
-              <key>CFBundleURLSchemes</key>
-              <array>
-                <string>fb$APP_IDFACEBOOK_URL_SCHEME_SUFFIX_PLACEHOLDER</string>
-                <string>OTHER_APP_SCHEMES_PLACEHOLDER</string>
-              </array>
-            </dict>
-          </array>
+            <array>
+                <dict>
+                    <key>CFBundleURLSchemes</key>
+                    <array>
+                        <string>fb$APP_IDFACEBOOK_URL_SCHEME_SUFFIX_PLACEHOLDER</string>
+                        <string>OTHER_APP_SCHEMES_PLACEHOLDER</string>
+                    </array>
+                </dict>
+            </array>
         </config-file>
 
         <config-file target="*-Info.plist" parent="NSAppTransportSecurity">
-          <dict>
-            <key>NSExceptionDomains</key>
             <dict>
-                <key>facebook.com</key>
+                <key>NSExceptionDomains</key>
                 <dict>
-                    <key>NSIncludesSubdomains</key>
-                    <true/>
-                    <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-                    <false/>
-                </dict>
-                <key>fbcdn.net</key>
-                <dict>
-                    <key>NSIncludesSubdomains</key>
-                    <true/>
-                    <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-                    <false/>
-                </dict>
-                <key>akamaihd.net</key>
-                <dict>
-                    <key>NSIncludesSubdomains</key>
-                    <true/>
-                    <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-                    <false/>
+                    <key>facebook.com</key>
+                    <dict>
+                        <key>NSIncludesSubdomains</key>
+                        <true/>
+                        <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+                        <false/>
+                    </dict>
+                    <key>fbcdn.net</key>
+                    <dict>
+                        <key>NSIncludesSubdomains</key>
+                        <true/>
+                        <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+                        <false/>
+                    </dict>
+                    <key>akamaihd.net</key>
+                    <dict>
+                        <key>NSIncludesSubdomains</key>
+                        <true/>
+                        <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+                        <false/>
+                    </dict>
                 </dict>
             </dict>
-          </dict>
         </config-file>
 
         <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
-          <array>
-            <string>fbapi</string>
-            <string>fb-messenger-api</string>
-            <string>fbauth2</string>
-            <string>fbshareextension</string>
-          </array>
+            <array>
+                <string>fbapi</string>
+                <string>fb-messenger-api</string>
+                <string>fbauth2</string>
+                <string>fbshareextension</string>
+            </array>
         </config-file>
 
         <!-- Facebook SDK -->
